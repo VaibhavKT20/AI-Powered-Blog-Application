@@ -90,7 +90,7 @@ const Login = () => {
 
         {/* Footer */}
         <div className="mt-6 text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} QuickBlog Admin Panel. All rights
+          &copy; {new Date().getFullYear()} WordNest Admin Panel. All rights
           reserved.
         </div>
       </div>
