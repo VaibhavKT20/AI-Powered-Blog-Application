@@ -11,7 +11,7 @@ const Navber = () => {
       {/* Logo */}
       <img
         onClick={() => navigate("/")}
-        src={assets.new_logo}
+        src={assets.new_word_nest_logo}
         alt="logo"
         className="w-48 sm:w-60 cursor-pointer"
       />

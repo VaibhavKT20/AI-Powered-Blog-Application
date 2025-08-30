@@ -13,6 +13,7 @@ import googleplus_icon from "./googleplus_icon.svg";
 import twitter_icon from "./twitter_icon.svg";
 import logo from "./logo.svg";
 import new_logo from "./new_logo.svg";
+import new_word_nest_logo from "./new_word_nest_logo.png";
 import arrow from "./arrow.svg";
 import logo_light from "./logo_light.svg";
 import blog_icon from "./blog_icon.png";
@@ -39,6 +40,7 @@ export const assets = {
   twitter_icon,
   logo,
   new_logo,
+  new_word_nest_logo,
   arrow,
   logo_light,
   blog_icon,

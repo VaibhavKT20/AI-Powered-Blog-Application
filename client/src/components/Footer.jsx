@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="flex-1 min-w-[260px]">
             <img
               onClick={() => (window.location.href = "/")}
-              src={assets.new_logo}
+              src={assets.new_word_nest_logo}
               alt="logo"
               className="w-44 sm:w-52 lg:w-56 cursor-pointer mb-6"
             />

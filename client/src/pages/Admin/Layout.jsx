@@ -22,7 +22,7 @@ const Layout = () => {
       >
         {/* Logo */}
         <img
-          src={assets.new_logo}
+          src={assets.new_word_nest_logo}
           alt="Logo"
           className="w-48 sm:w-60 cursor-pointer hover:scale-105 transition-transform duration-300"
           onClick={() => navigate("/")}
