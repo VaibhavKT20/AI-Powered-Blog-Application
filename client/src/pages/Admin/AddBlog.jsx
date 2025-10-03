@@ -41,10 +41,9 @@ const AddBlog = () => {
   };
 
   const onSubmitHandler = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       setIsAdding(true);
-
       const blog = {
         title,
         subTitle,
@@ -63,8 +62,10 @@ const AddBlog = () => {
         toast.success(data.message);
         setImage(false);
         setTitle("");
+        setSubTitle("");
         quillref.current.root.innerHTML = "";
         setCategory("Startup");
+        setIsPublished(false);
       } else {
         toast.error(data.message);
       }
@@ -84,9 +85,9 @@ const AddBlog = () => {
   return (
     <form
       onSubmit={onSubmitHandler}
-      className="flex-1 bg-gradient-to-br from-white via-yellow-50 to-yellow-100 text-gray-700 h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10"
+      className="flex-1 bg-gradient-to-br from-white via-yellow-50 to-yellow-100 text-gray-700 min-h-screen overflow-auto p-4 sm:p-6 md:p-8 lg:p-10"
     >
-      <div className="bg-white w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl p-4 sm:p-6 md:p-8 lg:p-10 mx-auto shadow-2xl rounded-2xl border border-yellow-200/70 flex flex-col gap-6 sm:gap-8">
+      <div className="bg-white w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl p-4 sm:p-6 md:p-8 lg:p-10 mx-auto shadow-2xl rounded-2xl border border-yellow-200/70 flex flex-col gap-6 sm:gap-8 pb-20">
         {/* Upload Thumbnail */}
         <p className="font-semibold text-gray-700 tracking-wide text-sm sm:text-base">
           Upload Thumbnail
@@ -146,11 +147,13 @@ const AddBlog = () => {
               ref={editorRef}
               className="h-full px-2 sm:px-3 text-sm sm:text-base"
             ></div>
+
             {loading && (
               <div className="absolute inset-0 flex items-center justify-center bg-black/10 rounded-lg">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 border-4 border-yellow-400 border-t-yellow-600 rounded-full animate-spin"></div>
               </div>
             )}
+
             <button
               disabled={loading}
               type="button"
