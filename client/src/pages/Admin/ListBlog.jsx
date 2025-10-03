@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { blog_data } from "../../assets/assets";
-import TableItem from "../../components/admin/TableItem";
 import { useAppContext } from "../../context/AppContext";
+import TableItem from "../../components/admin/TableItem";
 import toast from "react-hot-toast";
 
 const ListBlog = () => {
@@ -24,23 +23,32 @@ const ListBlog = () => {
   useEffect(() => {
     fetchBlogs();
   }, []);
+
   return (
-    <div className="flex-1 pt-6 px-5 sm:pt-12 sm:pl-16 bg-gray-50">
+    <div className="flex-1 pt-6 px-2 sm:px-4 md:px-6 lg:px-8 bg-gray-50 min-h-screen">
       {/* Heading */}
-      <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4 sm:mb-6">
         📚 All Blogs
       </h1>
 
       {/* Table Container */}
-      <div className="relative max-w-6xl overflow-x-auto rounded-2xl shadow-md border border-gray-100 bg-white">
-        <table className="w-full text-sm text-gray-600 border-collapse">
-          <thead className="bg-gradient-to-r from-yellow-100 to-yellow-200 text-gray-700 text-xs uppercase tracking-wide">
+      <div className="relative w-full overflow-x-auto rounded-xl shadow-md border border-gray-100 bg-white">
+        <table className="w-full min-w-[400px] sm:min-w-[600px] text-xs sm:text-sm md:text-base text-gray-600 border-collapse">
+          <thead className="bg-gradient-to-r from-yellow-100 to-yellow-200 text-gray-700 text-[10px] sm:text-xs md:text-sm uppercase tracking-wide">
             <tr>
-              <th className="px-4 py-3 text-center font-semibold">#</th>
-              <th className="px-4 py-3 text-left font-semibold">Blog Title</th>
-              <th className="px-4 py-3 max-sm:hidden font-semibold">Date</th>
-              <th className="px-4 py-3 max-sm:hidden font-semibold">Status</th>
-              <th className="px-4 py-3 text-center font-semibold">Action</th>
+              <th className="px-2 sm:px-3 py-2 text-center font-semibold">#</th>
+              <th className="px-2 sm:px-3 py-2 text-left font-semibold">
+                Blog Title
+              </th>
+              <th className="px-2 sm:px-3 py-2 hidden sm:table-cell font-semibold">
+                Date
+              </th>
+              <th className="px-2 sm:px-3 py-2 hidden sm:table-cell font-semibold">
+                Status
+              </th>
+              <th className="px-2 sm:px-3 py-2 text-center font-semibold">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -57,7 +65,7 @@ const ListBlog = () => {
       </div>
 
       {/* Footer Note */}
-      <p className="mt-5 text-gray-400 text-xs text-center">
+      <p className="mt-3 sm:mt-4 text-gray-400 text-[10px] sm:text-xs text-center px-2">
         💡 Tip: Scroll horizontally on smaller screens to view all details.
       </p>
     </div>

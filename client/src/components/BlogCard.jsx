@@ -8,9 +8,9 @@ const BlogCard = ({ blog }) => {
   return (
     <div
       onClick={() => navigate(`/blog/${_id}`)}
-      className="w-full rounded-2xl overflow-hidden relative bg-white shadow-md border border-gray-100 
-               hover:shadow-xl hover:shadow-yellow-500/30 transition-all duration-500 cursor-pointer
-               group hover:-translate-y-2"
+      className="w-full rounded-2xl overflow-hidden relative bg-white shadow-md border border-gray-100
+                 hover:shadow-xl hover:shadow-yellow-500/30 transition-all duration-500 cursor-pointer
+                 group hover:-translate-y-1 sm:hover:-translate-y-2"
     >
       {/* Image with overlay */}
       <div className="relative overflow-hidden">
@@ -24,19 +24,19 @@ const BlogCard = ({ blog }) => {
 
         {/* Category Badge */}
         <span
-          className="absolute bottom-3 left-3 px-3 py-1 text-xs font-medium tracking-wide
-                       bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-full shadow-md
-                       group-hover:scale-110 transition-transform"
+          className="absolute bottom-3 left-3 px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium tracking-wide
+                     bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-full shadow-md
+                     group-hover:scale-105 transition-transform"
         >
           {category}
         </span>
       </div>
 
       {/* Blog Content */}
-      <div className="p-5 relative z-10">
+      <div className="p-4 sm:p-5 relative z-10">
         {/* Title */}
         <h5
-          className="mb-2 font-semibold text-lg text-gray-900 line-clamp-2 
+          className="mb-2 font-semibold text-base sm:text-lg md:text-xl text-gray-900 line-clamp-2
                      group-hover:text-yellow-600 transition-colors duration-300"
         >
           {title}
@@ -44,12 +44,12 @@ const BlogCard = ({ blog }) => {
 
         {/* Description */}
         <p
-          className="text-sm text-gray-600 leading-relaxed line-clamp-3 group-hover:text-gray-800 transition-colors duration-300"
+          className="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-3 group-hover:text-gray-800 transition-colors duration-300"
           dangerouslySetInnerHTML={{ __html: description.slice(0, 120) }}
         ></p>
 
         {/* Read More → CTA */}
-        <div className="mt-4 flex items-center gap-2 text-yellow-600 font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="mt-3 sm:mt-4 flex items-center gap-2 text-yellow-600 font-medium text-xs sm:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <span>Read More</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ const BlogCard = ({ blog }) => {
             viewBox="0 0 24 24"
             strokeWidth="2"
             stroke="currentColor"
-            className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+            className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform"
           >
             <path
               strokeLinecap="round"

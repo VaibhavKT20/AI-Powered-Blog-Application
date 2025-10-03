@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { assets, dashboard_data } from "../../assets/assets";
+import { assets } from "../../assets/assets";
 import TableItem from "../../components/admin/TableItem";
 import { useAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
@@ -27,9 +27,9 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="flex-1 p-6 md:p-12 bg-gradient-to-br from-white via-yellow-50 to-white min-h-screen">
+    <div className="flex-1 p-4 sm:p-6 md:p-12 bg-gradient-to-br from-white via-yellow-50 to-white min-h-screen">
       {/* Summary Cards */}
-      <div className="flex flex-wrap gap-6 justify-center md:justify-start mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
         {[
           {
             icon: assets.dashboard_icon_1,
@@ -49,7 +49,7 @@ const Dashboard = () => {
         ].map((card, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-4 bg-white px-6 py-5 min-w-[14rem] rounded-2xl shadow-md border border-yellow-100 
+            className="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-md border border-yellow-100 
                      hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
             <img src={card.icon} alt={card.label} className="w-10 h-10" />
@@ -62,7 +62,7 @@ const Dashboard = () => {
       </div>
 
       {/* Latest Blogs Table */}
-      <div className="max-w-5xl mx-auto">
+      <div className="w-full">
         <div className="flex items-center gap-3 mb-4 text-gray-800 font-semibold text-lg">
           <img
             src={assets.dashboard_icon_4}
@@ -72,8 +72,9 @@ const Dashboard = () => {
           <p>Latest Blogs</p>
         </div>
 
-        <div className="relative overflow-x-auto rounded-2xl shadow-lg border border-yellow-200 bg-white">
-          <table className="w-full text-sm text-gray-700 border-collapse">
+        <div className="overflow-x-auto rounded-2xl shadow-lg border border-yellow-200 bg-white">
+          {/* Desktop / Tablet Table */}
+          <table className="w-full text-sm text-gray-700 border-collapse min-w-[600px] sm:min-w-full hidden sm:table">
             <thead className="bg-yellow-50 text-xs uppercase text-gray-700 tracking-wide">
               <tr>
                 <th className="px-4 py-3 text-left">#</th>
@@ -94,6 +95,26 @@ const Dashboard = () => {
               ))}
             </tbody>
           </table>
+
+          {/* Mobile Stacked View */}
+          <div className="sm:hidden flex flex-col divide-y divide-gray-200 p-4">
+            {dashboardData.recentBlogs.map((blog, index) => (
+              <div key={blog._id} className="pb-4">
+                <p className="font-semibold text-gray-700 mb-1">
+                  {index + 1}. {blog.title}
+                </p>
+                <p className="text-gray-500 text-xs mb-1">
+                  Date: {new Date(blog.createdAt).toLocaleDateString()}
+                </p>
+                <p className="text-gray-500 text-xs mb-1">
+                  Status: {blog.isPublished ? "Published" : "Unpublished"}
+                </p>
+                <div className="flex gap-2 mt-1">
+                  {/* You can reuse TableItem action buttons here if needed */}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

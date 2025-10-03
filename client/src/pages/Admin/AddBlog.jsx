@@ -69,14 +69,13 @@ const AddBlog = () => {
         toast.error(data.message);
       }
     } catch (error) {
-      toast.error(error.messahe);
+      toast.error(error.message);
     } finally {
       setIsAdding(false);
     }
   };
 
   useEffect(() => {
-    //Initiate Quill only once
     if (!quillref.current && editorRef.current) {
       quillref.current = new Quill(editorRef.current, { theme: "snow" });
     }
@@ -85,18 +84,18 @@ const AddBlog = () => {
   return (
     <form
       onSubmit={onSubmitHandler}
-      className="flex-1 bg-gradient-to-br from-white via-yellow-50 to-yellow-100 text-gray-700 h-full overflow-auto p-6 sm:p-10"
+      className="flex-1 bg-gradient-to-br from-white via-yellow-50 to-yellow-100 text-gray-700 h-full overflow-auto p-4 sm:p-6 md:p-8 lg:p-10"
     >
-      <div className="bg-white w-full max-w-3xl p-8 sm:p-12 mx-auto shadow-2xl rounded-2xl border border-yellow-200/70">
+      <div className="bg-white w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl p-4 sm:p-6 md:p-8 lg:p-10 mx-auto shadow-2xl rounded-2xl border border-yellow-200/70 flex flex-col gap-6 sm:gap-8">
         {/* Upload Thumbnail */}
-        <p className="font-semibold text-gray-700 tracking-wide">
+        <p className="font-semibold text-gray-700 tracking-wide text-sm sm:text-base">
           Upload Thumbnail
         </p>
-        <label htmlFor="image" className="block mt-3 cursor-pointer group">
+        <label htmlFor="image" className="block cursor-pointer group w-full">
           <img
             src={!image ? assets.upload_area : URL.createObjectURL(image)}
             alt=""
-            className="h-24 w-full object-cover rounded-xl border-2 border-dashed border-yellow-300 group-hover:border-yellow-500 transition-all shadow-sm"
+            className="w-full h-32 sm:h-40 md:h-48 lg:h-56 object-cover rounded-xl border-2 border-dashed border-yellow-300 group-hover:border-yellow-500 transition-all shadow-sm"
           />
           <input
             onChange={(e) => setImage(e.target.files[0])}
@@ -108,78 +107,89 @@ const AddBlog = () => {
         </label>
 
         {/* Blog Title */}
-        <p className="mt-8 font-semibold text-gray-700 tracking-wide">
-          Blog Title
-        </p>
-        <input
-          type="text"
-          placeholder="Enter a catchy title..."
-          required
-          className="w-full mt-2 p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-yellow-500 transition-all shadow-sm"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-        />
+        <div className="flex flex-col">
+          <p className="font-semibold text-gray-700 tracking-wide text-sm sm:text-base">
+            Blog Title
+          </p>
+          <input
+            type="text"
+            placeholder="Enter a catchy title..."
+            required
+            className="mt-2 p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-yellow-500 transition-all shadow-sm text-sm sm:text-base w-full"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+          />
+        </div>
 
         {/* Sub Title */}
-        <p className="mt-6 font-semibold text-gray-700 tracking-wide">
-          Sub Title
-        </p>
-        <input
-          type="text"
-          placeholder="Add a subtitle"
-          required
-          className="w-full mt-2 p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-yellow-500 transition-all shadow-sm"
-          onChange={(e) => setSubTitle(e.target.value)}
-          value={subTitle}
-        />
+        <div className="flex flex-col">
+          <p className="font-semibold text-gray-700 tracking-wide text-sm sm:text-base">
+            Sub Title
+          </p>
+          <input
+            type="text"
+            placeholder="Add a subtitle"
+            required
+            className="mt-2 p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-yellow-500 transition-all shadow-sm text-sm sm:text-base w-full"
+            onChange={(e) => setSubTitle(e.target.value)}
+            value={subTitle}
+          />
+        </div>
 
         {/* Blog Description */}
-        <p className="mt-6 font-semibold text-gray-700 tracking-wide">
-          Blog Description
-        </p>
-        <div className="max-w-full h-80 pb-14 sm:pb-12 pt-2 relative border border-gray-300 rounded-xl shadow-inner bg-yellow-50/30">
-          <div ref={editorRef} className="h-full overflow-auto px-2"></div>
-          {loading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black/10 rounded-lg">
-              <div className="w-12 h-12 border-4 border-yellow-400 border-t-yellow-600 rounded-full animate-spin"></div>
-            </div>
-          )}
-          <button
-            disabled={loading}
-            type="button"
-            onClick={generateContent}
-            className="absolute bottom-3 right-3 text-xs text-white bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 px-4 py-1.5 rounded-lg transition-all cursor-pointer shadow-md"
-          >
-            Generate with AI
-          </button>
+        <div className="flex flex-col relative">
+          <p className="font-semibold text-gray-700 tracking-wide text-sm sm:text-base">
+            Blog Description
+          </p>
+          <div className="max-w-full h-64 sm:h-72 md:h-80 lg:h-96 pt-2 pb-12 relative border border-gray-300 rounded-xl shadow-inner bg-yellow-50/30 overflow-auto">
+            <div
+              ref={editorRef}
+              className="h-full px-2 sm:px-3 text-sm sm:text-base"
+            ></div>
+            {loading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/10 rounded-lg">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 border-4 border-yellow-400 border-t-yellow-600 rounded-full animate-spin"></div>
+              </div>
+            )}
+            <button
+              disabled={loading}
+              type="button"
+              onClick={generateContent}
+              className="absolute bottom-3 right-3 text-[10px] sm:text-xs text-white bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 px-3 sm:px-4 py-1 sm:py-1.5 rounded-lg transition-all cursor-pointer shadow-md"
+            >
+              Generate with AI
+            </button>
+          </div>
         </div>
 
         {/* Blog Category */}
-        <p className="mt-6 font-semibold text-gray-700 tracking-wide">
-          Blog Category
-        </p>
-        <select
-          onChange={(e) => setCategory(e.target.value)}
-          name="category"
-          className="mt-2 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 outline-none focus:ring-2 focus:ring-yellow-500 transition-all shadow-sm"
-        >
-          <option value="">Select Category</option>
-          {blogCategories.map((item, index) => (
-            <option key={index} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
+        <div className="flex flex-col">
+          <p className="font-semibold text-gray-700 tracking-wide text-sm sm:text-base">
+            Blog Category
+          </p>
+          <select
+            onChange={(e) => setCategory(e.target.value)}
+            name="category"
+            className="mt-2 px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-gray-700 outline-none focus:ring-2 focus:ring-yellow-500 transition-all shadow-sm text-sm sm:text-base w-full"
+          >
+            <option value="">Select Category</option>
+            {blogCategories.map((item, index) => (
+              <option key={index} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </div>
 
         {/* Publish Toggle */}
-        <div className="flex items-center gap-3 mt-6">
-          <p className="font-semibold text-gray-700 tracking-wide">
+        <div className="flex items-center gap-3 mt-2 sm:mt-4">
+          <p className="font-semibold text-gray-700 tracking-wide text-sm sm:text-base">
             Publish Now
           </p>
           <input
             type="checkbox"
             checked={isPublished}
-            className="scale-125 cursor-pointer accent-yellow-500"
+            className="scale-110 sm:scale-125 cursor-pointer accent-yellow-500"
             onChange={(e) => setIsPublished(e.target.checked)}
           />
         </div>
@@ -188,7 +198,7 @@ const AddBlog = () => {
         <button
           disabled={isAdding}
           type="submit"
-          className="mt-10 w-full sm:w-44 h-12 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold rounded-xl cursor-pointer hover:from-yellow-600 hover:to-yellow-700 transition-all shadow-lg"
+          className="mt-4 sm:mt-6 w-full sm:w-48 h-10 sm:h-12 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold rounded-xl cursor-pointer hover:from-yellow-600 hover:to-yellow-700 transition-all shadow-lg text-sm sm:text-base"
         >
           {isAdding ? "Adding..." : "Add Blog"}
         </button>
