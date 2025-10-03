@@ -22,7 +22,6 @@ const Header = () => {
         {/* Badge */}
         <div className="inline-flex items-center justify-center gap-3 px-6 py-1.5 mb-6 border border-yellow-500/30 rounded-full text-sm font-medium text-yellow-600 bg-yellow-50 shadow-sm animate-pulse">
           <p>✨ New: AI Feature Integrated</p>
-          {/* <img src={assets.star_icon} alt="star" className="w-3" /> */}
         </div>
 
         {/* Heading */}
