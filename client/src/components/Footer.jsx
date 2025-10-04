@@ -1,7 +1,9 @@
 import React from "react";
 import { assets, footer_data } from "../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -9,10 +11,13 @@ const Footer = () => {
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-32 py-10 sm:py-14">
         {/* Top Section: Logo + Links */}
         <div className="flex flex-col lg:flex-row justify-between gap-10 sm:gap-14 lg:gap-24">
-          {/* Logo & Description */}
+          {/* Logo and Description */}
           <div className="flex-1 min-w-[200px] sm:min-w-[260px]">
             <img
-              onClick={() => (window.location.href = "/")}
+              onClick={() => {
+                navigate("/");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
               src={assets.new_word_nest_logo}
               alt="logo"
               className="w-36 sm:w-44 lg:w-52 xl:w-56 cursor-pointer mb-4 sm:mb-6"

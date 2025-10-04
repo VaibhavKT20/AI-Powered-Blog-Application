@@ -87,7 +87,7 @@ const CommentTableItem = ({ comment, fetchComments }) => {
               className="w-4 h-4 sm:w-5 sm:h-6 cursor-pointer hover:scale-110 transition-transform"
             />
           ) : (
-            <span className="text-[9px] sm:text-xs font-semibold border border-green-600 bg-green-100 text-green-600 rounded-full px-2 sm:px-3 py-1 shadow-sm">
+            <span className="text-[9px] sm:text-xs font-semibold border border-green-600 bg-green-100 text-green-600 rounded-full px-2 sm:px-3 py-1 shadow-sm cursor-pointer">
               Approved
             </span>
           )}

@@ -4,6 +4,7 @@ import Quill from "quill";
 import { useAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
 import { parse } from "marked";
+import { Sparkles } from "lucide-react";
 
 const AddBlog = () => {
   const { axios } = useAppContext();
@@ -158,8 +159,14 @@ const AddBlog = () => {
               disabled={loading}
               type="button"
               onClick={generateContent}
-              className="absolute bottom-3 right-3 text-[10px] sm:text-xs text-white bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 px-3 sm:px-4 py-1 sm:py-1.5 rounded-lg transition-all cursor-pointer shadow-md"
+              className="absolute bottom-3 right-3 flex items-center gap-1 sm:gap-2 
+             text-[10px] sm:text-xs text-white 
+             bg-gradient-to-r from-yellow-500 to-yellow-600 
+             hover:from-yellow-600 hover:to-yellow-700 
+             px-3 sm:px-4 py-1 sm:py-1.5 
+             rounded-lg transition-all cursor-pointer shadow-md"
             >
+              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
               Generate with AI
             </button>
           </div>
@@ -167,17 +174,19 @@ const AddBlog = () => {
 
         {/* Blog Category */}
         <div className="flex flex-col">
-          <p className="font-semibold text-gray-700 tracking-wide text-sm sm:text-base">
+          <p className="font-semibold text-gray-700 tracking-wide text-sm sm:text-base cursor-pointer">
             Blog Category
           </p>
           <select
             onChange={(e) => setCategory(e.target.value)}
             name="category"
-            className="mt-2 px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-gray-700 outline-none focus:ring-2 focus:ring-yellow-500 transition-all shadow-sm text-sm sm:text-base w-full"
+            className="mt-2 px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-gray-700 outline-none focus:ring-2 focus:ring-yellow-500 transition-all shadow-sm text-sm sm:text-base w-full cursor-pointer"
           >
-            <option value="">Select Category</option>
+            <option value="" className="cursor-pointer">
+              Select Category
+            </option>
             {blogCategories.map((item, index) => (
-              <option key={index} value={item}>
+              <option key={index} value={item} className="cursor-pointer">
                 {item}
               </option>
             ))}

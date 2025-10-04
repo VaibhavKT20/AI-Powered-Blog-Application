@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { assets } from "../assets/assets";
 import { useAppContext } from "../context/AppContext";
+import { Sparkles } from "lucide-react";
 
 const Header = () => {
   const { setInput, input } = useAppContext();
@@ -21,7 +22,10 @@ const Header = () => {
       <div className="text-center mt-24 mb-12 relative z-10">
         {/* Badge */}
         <div className="inline-flex items-center justify-center gap-3 px-6 py-1.5 mb-6 border border-yellow-500/30 rounded-full text-sm font-medium text-yellow-600 bg-yellow-50 shadow-sm animate-pulse">
-          <p>✨ New: AI Feature Integrated</p>
+          <p className="flex items-center gap-1 text-yellow-500 font-semibold text-sm sm:text-base">
+            <Sparkles className="w-4 h-4" />
+            New: AI Feature Integrated
+          </p>
         </div>
 
         {/* Heading */}

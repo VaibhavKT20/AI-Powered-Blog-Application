@@ -44,7 +44,7 @@ const Layout = () => {
 
       {/* Main Layout */}
       <div className="flex flex-1 min-h-[calc(100vh-60px)] sm:min-h-[calc(100vh-70px)] bg-gray-50">
-        {/* Sidebar (Desktop & Tablet) */}
+        {/* Sidebar (Desktop and Tablet) */}
         <aside className="hidden md:flex flex-col w-52 lg:w-60 xl:w-64 bg-white border-r border-gray-100 shadow-md">
           <Sidebar />
         </aside>

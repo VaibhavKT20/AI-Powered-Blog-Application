@@ -109,9 +109,7 @@ const Dashboard = () => {
                 <p className="text-gray-500 text-xs mb-1">
                   Status: {blog.isPublished ? "Published" : "Unpublished"}
                 </p>
-                <div className="flex gap-2 mt-1">
-                  {/* You can reuse TableItem action buttons here if needed */}
-                </div>
+                <div className="flex gap-2 mt-1"></div>
               </div>
             ))}
           </div>

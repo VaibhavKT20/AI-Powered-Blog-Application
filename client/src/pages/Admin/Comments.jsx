@@ -34,7 +34,7 @@ const Comments = () => {
             className={`px-4 sm:px-5 py-2 rounded-full shadow-md border transition-all text-sm font-semibold ${
               filter === "Approved"
                 ? "bg-yellow-500 text-white border-yellow-600 shadow-lg scale-105"
-                : "bg-white text-gray-700 border-gray-200 hover:bg-yellow-100"
+                : "bg-white text-gray-700 border-gray-200 hover:bg-yellow-100 cursor-pointer"
             }`}
           >
             Approved
@@ -44,7 +44,7 @@ const Comments = () => {
             className={`px-4 sm:px-5 py-2 rounded-full shadow-md border transition-all text-sm font-semibold ${
               filter === "Not Approved"
                 ? "bg-yellow-500 text-white border-yellow-600 shadow-lg scale-105"
-                : "bg-white text-gray-700 border-gray-200 hover:bg-yellow-100"
+                : "bg-white text-gray-700 border-gray-200 hover:bg-yellow-100 cursor-pointer"
             }`}
           >
             Not Approved

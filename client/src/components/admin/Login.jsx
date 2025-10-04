@@ -7,17 +7,23 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e, demo = false) => {
+    e?.preventDefault();
+
+    const loginEmail = demo ? "admin@example.com" : email;
+    const loginPassword = demo ? "admin123" : password;
+
     try {
       const { data } = await axios.post("/api/admin/login", {
-        email,
-        password,
+        email: loginEmail,
+        password: loginPassword,
       });
+
       if (data.success) {
         setToken(data.token);
         localStorage.setItem("token", data.token);
         axios.defaults.headers.common["Authorization"] = data.token;
+        toast.success("Login successful!");
       } else {
         toast.error(data.message);
       }
@@ -52,6 +58,7 @@ const Login = () => {
             <input
               onChange={(e) => setEmail(e.target.value)}
               type="email"
+              value={email}
               required
               placeholder="you@example.com"
               className="border border-gray-300 rounded-xl p-2 sm:p-3 text-sm sm:text-base md:text-base lg:text-lg outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 shadow-sm transition-all w-full"
@@ -66,6 +73,7 @@ const Login = () => {
             <input
               onChange={(e) => setPassword(e.target.value)}
               type="password"
+              value={password}
               required
               placeholder="Enter your password"
               className="border border-gray-300 rounded-xl p-2 sm:p-3 text-sm sm:text-base md:text-base lg:text-lg outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 shadow-sm transition-all w-full"
@@ -81,7 +89,22 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Demo Credentials */}
+        {/* OR Divider */}
+        <div className="flex items-center justify-center my-4">
+          <div className="h-[1px] bg-gray-300 w-1/3"></div>
+          <span className="px-2 text-gray-500 text-xs sm:text-sm">OR</span>
+          <div className="h-[1px] bg-gray-300 w-1/3"></div>
+        </div>
+
+        {/* Demo Login Button */}
+        <button
+          onClick={(e) => handleSubmit(e, true)}
+          className="w-full py-2.5 sm:py-3 md:py-3 lg:py-4 bg-gradient-to-r from-gray-700 to-gray-900 text-white font-semibold rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer text-sm sm:text-base md:text-base lg:text-lg"
+        >
+          Login with Demo Credentials
+        </button>
+
+        {/* Demo Credentials Info */}
         <div className="mt-4 sm:mt-6 bg-gray-50 border border-gray-200 rounded-xl p-3 sm:p-4 text-xs sm:text-sm md:text-sm lg:text-base text-gray-700">
           <p className="font-semibold text-gray-800 mb-1 text-sm sm:text-base md:text-base lg:text-lg">
             Demo Credentials:
