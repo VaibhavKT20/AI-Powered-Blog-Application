@@ -2,7 +2,7 @@ import React from "react";
 import { assets } from "../assets/assets";
 import { useAppContext } from "../context/AppContext";
 
-const Navber = () => {
+const Navbar = () => {
   const { navigate, token } = useAppContext();
 
   return (
@@ -31,4 +31,4 @@ const Navber = () => {
   );
 };
 
-export default Navber;
+export default Navbar;

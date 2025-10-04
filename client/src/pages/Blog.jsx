@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { assets } from "../assets/assets";
-import Navber from "../components/Navber";
+import Navbar from "../components/Navbar";
 import Moment from "moment";
 import Footer from "../components/Footer";
 import Loader from "../components/Loader";
@@ -80,7 +80,7 @@ const Blog = () => {
         className="absolute inset-0 w-full h-full object-cover -z-10 opacity-20"
       />
 
-      <Navber />
+      <Navbar />
 
       {/* Blog Header */}
       <div className="text-center mt-20 text-gray-800 px-4 sm:px-6 md:px-10 lg:px-20">
@@ -210,7 +210,7 @@ const Blog = () => {
               <img
                 src={assets.facebook_icon}
                 width={36}
-                className="sm:w-11"
+                className="sm:w-11 cursor-pointer"
                 alt="Facebook"
               />
             </button>
@@ -222,7 +222,7 @@ const Blog = () => {
               <img
                 src={assets.twitter_icon}
                 width={36}
-                className="sm:w-11"
+                className="sm:w-11 cursor-pointer"
                 alt="Twitter"
               />
             </button>
@@ -234,7 +234,7 @@ const Blog = () => {
               <img
                 src={assets.googleplus_icon}
                 width={36}
-                className="sm:w-11"
+                className="sm:w-11 cursor-pointer"
                 alt="Google"
               />
             </button>
