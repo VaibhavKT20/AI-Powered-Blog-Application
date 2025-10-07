@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useAppContext } from "../../context/AppContext";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const { axios, setToken } = useAppContext();
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -80,7 +83,7 @@ const Login = () => {
             />
           </div>
 
-          {/* Submit */}
+          {/* Submit Button */}
           <button
             type="submit"
             className="w-full py-2.5 sm:py-3 md:py-3 lg:py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer text-sm sm:text-base md:text-base lg:text-lg"
@@ -103,6 +106,17 @@ const Login = () => {
         >
           Login with Demo Credentials
         </button>
+
+        {/* Signup Link */}
+        <div className="mt-4 text-center text-gray-700 text-sm sm:text-base">
+          Don't have an account?{" "}
+          <span
+            onClick={() => navigate("/admin/signup")}
+            className="text-yellow-600 font-semibold cursor-pointer hover:underline"
+          >
+            Signup
+          </span>
+        </div>
 
         {/* Demo Credentials Info */}
         <div className="mt-4 sm:mt-6 bg-gray-50 border border-gray-200 rounded-xl p-3 sm:p-4 text-xs sm:text-sm md:text-sm lg:text-base text-gray-700">
