@@ -2,12 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { assets, blogCategories } from "../../assets/assets";
 import Quill from "quill";
 import { useAppContext } from "../../context/AppContext";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { parse } from "marked";
 import { Sparkles } from "lucide-react";
 
 const AddBlog = () => {
   const { axios } = useAppContext();
+  const navigate = useNavigate();
   const [isAdding, setIsAdding] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -67,6 +69,9 @@ const AddBlog = () => {
         quillref.current.root.innerHTML = "";
         setCategory("Startup");
         setIsPublished(false);
+
+        // Redirect to home page after short delay
+        setTimeout(() => navigate("/"), 1000);
       } else {
         toast.error(data.message);
       }
