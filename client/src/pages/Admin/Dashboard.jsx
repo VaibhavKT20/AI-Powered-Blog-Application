@@ -19,7 +19,9 @@ const Dashboard = () => {
       data.success
         ? setDashboardData(data.dashboardData)
         : toast.error(data.message);
-    } catch (error) {}
+    } catch (error) {
+      toast.error(data.message);
+    }
   };
 
   useEffect(() => {
